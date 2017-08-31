@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Orators</title>
+
+
+    <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+    Dragonfruit Template
+    http://www.templatemo.com/preview/templatemo_411_dragonfruit
+    -->
+
+    <meta name="description" content="" />
+    <!-- templatemo 411 dragonfruit -->
+    <meta name="author" content="Himani">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="ora_logo.jpg" />
+    <!-- Font Awesome -->
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Camera -->
+    <link href="css/camera.css" rel="stylesheet">
+    <!-- Template  -->
+    <link href="css/templatemo_style.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/ui-darkness/jquery-ui.css" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+
+    <![endif]-->
+    <script src="jquery.min.js"></script>
+    <script src="jquery-ui.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <script src="jquery.singlePageNav.min.js"></script>
+    <script src="unslider.min.js"></script>
+
+
+
+</head>
+<body>
+<div id ="navigation"></div>
+<h1 style="color: red;margin-top: 10%;position: relative"> Grammar Rules</h1>
+
+<div id="gcontent" style="position: relative;margin-left: 5%;margin-right:7%"></div>
+
+
+<script
+        src="http://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+<script>
+    $.get("nav.html", function(data){
+        $("#navigation").replaceWith(data);
+    });
+    $(document).ready(function() {
+        console.log("onload wrking");
+        $.get('/scrapeGrammar', function (data, status) {
+            console.log(data +"isdata");
+
+            var adata=data.replace("{"," ");
+            var fdata =adata.replace("["," ");
+            var mdata = fdata.replace("}"," ");
+            var cdata = mdata.replace("]"," ");
+            var qdata = cdata.replace("para"," ").replace(/"/g,' ').replace('/\n/g',"<br>");
+            var sdata = qdata.replace("Nouns","<h2>Nouns</h2>").replace("Noun Identification","<h2>Noun Identification</h2>").replace("The functions of nouns","<h2>The function of nouns</h2>").replace("Types of Nouns","<h2>Types of Nouns</h2>").replace("Count Nouns","<h2>Count Nouns</h2>").replace("Plural Nouns","<h2>Plural Nouns</h2>").replace("Posessive Nouns","<h2>Possessive Nouns</h2>")
+           var wdata = sdata.replace("Pronouns","<h2>Pronouns</h2>").replace("Pronoun Cases","<h2>Pronoun Cases</h2>").replace("Possessive Pronouns","<h2>Possessive Pronoun</h2>").replace("Indefinite Pronouns","<h2>Indefinite Pronouns</h2>").replace("Interrogative Pronouns","<h2>Interrogative Pronouns</h2>").replace("Demonstrative Pronouns","<h2>Demonstrative Pronouns</h2>");
+            var vdata= wdata.replace("Verbs","<h2>Verbs</h2>").replace("Transitive Verbs","<h2>Transitive Verbs</h2>").replace("Intransitive Verbs","<h2>Intransitive Verbs</h2>").replace("Linking Verbs","<h2>Linking Verbs</h2>").replace("The Lay/Lie and Raise/Rise Confusion","<h3>The Lay/Lie and Raise/Rise Confusion</h3>");
+            var rdata=vdata.split("\n").join("</br>");
+
+            $('#gcontent').append(rdata);
+
+        })
+    })
+
+</script>
+</body>
+
+</html>

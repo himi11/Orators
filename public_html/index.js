@@ -1,0 +1,74 @@
+
+( function($) {
+$(document).ready(function() {
+
+   var list= document.getElementsByClassName("dt");
+    console.log("news wrking");
+    $.get('/scrape', function (data, status) {
+        var j =0;
+
+        for(var i=0; i<data.news.length;i++){
+            if(j<6) {
+                console.log(data.news.length);
+
+                if (data.news[i] == null) {
+
+                }
+                else {
+
+                    if(i==3){
+                        document.getElementById("feed1").innerHTML = data.news[i].feed;
+                        document.getElementById("dt1").innerHTML = data.news[i].src;
+                        console.log(data.news[i].link +"link this link");
+                       // document.getElementById("l1").setAttribute("href","data.news[i].link");
+                       $("#l1").html('<a href ='+data.news[i].link +'>' +data.news[i].link+"</a>");
+
+                    }
+                    if(i==4){
+
+                        document.getElementById("feed2").innerHTML = data.news[i].feed;
+                        document.getElementById("dt2").innerHTML = data.news[i].src;
+                    ///    document.getElementById("im2").setAttribute('src', data.news[i].img);
+                     //   document.getElementById("l2").innerHTML = data.news[i].link;
+                        $("#l2").html('<a href ='+data.news[i].link +'>' +data.news[i].link+"</a>");
+
+                    }
+                    if(i==5){
+                        document.getElementById("feed3").innerHTML = data.news[i].feed;
+                        document.getElementById("dt3").innerHTML = data.news[i].src;
+                    //    document.getElementById("im3").setAttribute('src', data.news[i].img);
+                    //    document.getElementById("l3").innerHTML = data.news[i].link;
+                        $("#l3").html('<a href ='+data.news[i].link +'>' +data.news[i].link+"</a>");
+                    }
+                    if(i==6){
+                        document.getElementById("feed4").innerHTML = data.news[i].feed;
+                        document.getElementById("dt4").innerHTML = data.news[i].src;
+                     //   document.getElementById("im4").setAttribute('src', data.news[i].img);
+                    //    document.getElementById("l4").innerHTML = data.news[i].link;
+                        $("#l4").html('<a href ='+data.news[i].link +'>' +data.news[i].link+"</a>");
+                    }
+                    if(i==7){
+                        document.getElementById("feed5").innerHTML = data.news[i].feed;
+                        document.getElementById("dt5").innerHTML = data.news[i].src;
+                    //    document.getElementById("im5").setAttribute('src', data.news[i].img);
+                       // document.getElementById("l5").innerHTML = data.news[i].link;
+                        $("#l5").html('<a href ='+data.news[i].link +'>'+ data.news[i].link+'</a>');
+                    }
+                    if(i==8){
+                        document.getElementById("feed6").innerHTML = data.news[i].feed;
+                        document.getElementById("dt6").innerHTML = data.news[i].src;
+                     //   document.getElementById("im6").setAttribute('src', data.news[i].img);
+                      //  document.getElementById("l6").innerHTML = data.news[i].link;
+                        $("#l6").html('<a href ='+data.news[i].link +'>' +data.news[i].link+"</a>");
+                    }
+
+
+                }
+            }
+                 else break;
+        }
+
+
+    })
+})
+} ) ( jQuery );

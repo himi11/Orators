@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+  <!--  https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,700italic,400italic
+
+   -->
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="ora_logo.jpg" />
+    <link href=" https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src ="index.js"> </script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+    <meta property="fb:app_id" content="109057493101348" />
+    <meta property="fb:admins" content="himani" />
+
+    <style>
+        @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,700italic,400italic);
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 14px;
+            color: #666;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 0;
+            margin-top: 60px;
+        }
+
+        #lean_overlay {
+            position: fixed;
+            z-index: 100;
+            top: 0px;
+            left: 0px;
+            height: 100%;
+            width: 100%;
+            background: #000;
+            display: none;
+        }
+
+        .popupContainer {
+            position: absolute;
+            width: 330px;
+            height: auto;
+            left: 45%;
+            top: 60px;
+            background: #FFF;
+        }
+
+        #modal_trigger {
+            margin: 40px auto;
+            width: 200px;
+            display: block;
+            border: 1px solid #DDD;
+            border-radius: 4px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background: #F4F4F2;
+        }
+
+        .btn_red {
+            background: #ED6347;
+            color: #FFF;
+        }
+
+        .btn:hover {
+            background: #E4E4E2;
+        }
+
+        .btn_red:hover {
+            background: #C12B05;
+        }
+
+        a.btn {
+            color: #666;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        a.btn_red {
+            color: #FFF;
+        }
+
+        .one_half {
+            width: 50%;
+            display: block;
+            float: left;
+        }
+
+        .one_half.last {
+            width: 45%;
+            margin-left: 5%;
+        }
+        /* Popup Styles*/
+
+        .popupHeader {
+            font-size: 16px;
+            text-transform: uppercase;
+        }
+
+        .popupHeader {
+            background: #F4F4F2;
+            position: relative;
+            padding: 10px 20px;
+            border-bottom: 1px solid #DDD;
+            font-weight: bold;
+        }
+
+        .popupHeader .modal_close {
+            position: absolute;
+            right: 0;
+            top: 0;
+            padding: 10px 15px;
+            background: #E4E4E2;
+            cursor: pointer;
+            color: #aaa;
+            font-size: 16px;
+        }
+
+        .popupBody {
+            padding: 20px;
+        }
+        /* Social Login Form */
+
+        .social_login {}
+
+        .social_login .social_box {
+            display: block;
+            clear: both;
+            padding: 10px;
+            margin-bottom: 10px;
+            background: #F4F4F2;
+            overflow: hidden;
+        }
+
+        .social_login .icon {
+            display: block;
+            width: 10px;
+            padding: 5px 10px;
+            margin-right: 10px;
+            float: left;
+            color: #FFF;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .social_login .fb .icon {
+            background: #3B5998;
+        }
+
+        .social_login .google .icon {
+            background: #DD4B39;
+        }
+
+        .social_login .icon_title {
+            display: block;
+            padding: 5px 0;
+            float: left;
+            font-weight: bold;
+            font-size: 16px;
+            color: #777;
+        }
+
+        .social_login .social_box:hover {
+            background: #E4E4E2;
+        }
+
+        .centeredText {
+            text-align: center;
+            margin: 20px 0;
+            clear: both;
+            overflow: hidden;
+            text-transform: uppercase;
+        }
+
+        .action_btns {
+            clear: both;
+            overflow: hidden;
+        }
+
+        .action_btns a {
+            display: block;
+        }
+        /* User Login Form */
+
+        .user_login {
+            display: none;
+        }
+
+        .user_login label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .user_login input[type="text"],
+        .user_login input[type="email"],
+        .user_login input[type="password"] {
+            display: block;
+            width: 90%;
+            padding: 10px;
+            border: 1px solid #DDD;
+            color: #666;
+        }
+
+        .user_login input[type="checkbox"] {
+            float: left;
+            margin-right: 5px;
+        }
+
+        .user_login input[type="checkbox"]+label {
+            float: left;
+        }
+
+        .user_login .checkbox {
+            margin-bottom: 10px;
+            clear: both;
+            overflow: hidden;
+        }
+
+        .forgot_password {
+            display: block;
+            margin: 20px 0 10px;
+            clear: both;
+            overflow: hidden;
+            text-decoration: none;
+            color: #ED6347;
+        }
+        /* User Register Form */
+
+        .user_register {
+            display: none;
+        }
+
+        .user_register label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .user_register input[type="text"],
+        .user_register input[type="email"],
+        .user_register input[type="password"] {
+            display: block;
+            width: 90%;
+            padding: 10px;
+            border: 1px solid #DDD;
+            color: #666;
+        }
+
+        .user_register input[type="checkbox"] {
+            float: left;
+            margin-right: 5px;
+        }
+
+        .user_register input[type="checkbox"]+label {
+            float: left;
+        }
+
+        .user_register .checkbox {
+            margin-bottom: 10px;
+            clear: both;
+            overflow: hidden;
+        }
+        .SecPgContent{
+
+            height:auto;
+            width:100%;
+
+
+        }
+        #appear{
+            display:none;
+            height:800px;
+            width:100%;
+
+            position: relative;
+        }
+        .pg{
+
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            height: 100%;
+            width:90%;
+
+            position: relative;
+
+        }
+        #btw{
+            flex-grow: 3;
+            width: 50%;
+            height: auto;
+        }
+        #side{
+            width: 20%;
+            height:auto;
+        }
+        #grammar{
+            margin-top: 5%;
+            padding: 3%;
+            width:20%;
+            height:25%;
+        }
+        #post{
+            color: black ;
+            background-color: mistyrose ;
+            border-color: red;
+            ;
+        }
+        .container{
+            height:200%;
+            width:100%;
+
+
+            margin-top: 10%;
+        }
+        #leftempty{
+            height: 100%;
+            width:30%;
+        }
+        .secContainer{
+            width:auto;
+            height: auto;
+
+        }
+
+
+
+        #loadMore {
+            color:green;
+            cursor:pointer;
+        }
+        #loadMore:hover {
+            color:black;
+        }
+        #showLess {
+            color:red;
+            cursor:pointer;
+        }
+        #showLess:hover {
+            color:black;
+        }
+
+    </style>
+
+<script>
+
+</script>
+</head>
+<body>
+<div id="fb-root"></div>
+<script>
+   // if(localStorage.getItem("stat")=="logged in"){
+
+
+
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '109057493101348',
+            xfbml      : true,
+            version    : 'v2.10'
+        });
+        FB.AppEvents.logPageView();
+    };
+
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+  // <div id="fb-root"></div>
+       (function(d, s, id) {
+           var js, fjs = d.getElementsByTagName(s)[0];
+           if (d.getElementById(id)) return;
+           js = d.createElement(s); js.id = id;
+           js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.10&appId=109057493101348";
+           fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+
+<div id ="navbar"></div>
+<div class="container">
+
+    <h1 id="loginhead"></h1>
+    <a id="modal_trigger" href="#modal" class="btn">Click here to Login or register</a>
+
+    <div id="modal" name ="khulna"class="popupContainer" style="display:none;">
+        <header class="popupHeader">
+            <span class="header_title">Login</span>
+            <span class="modal_close"><i class="fa fa-times"></i></span>
+        </header>
+
+        <section class="popupBody">
+            <!-- Social Login -->
+            <div class="social_login">
+                <div class="">
+                  <!--  <a href="#" class="social_box fb">
+                        <span class="icon"><i class="fa fa-facebook"></i></span>
+                        <span class="icon_title">Connect with Facebook</span>
+
+                    </a>
+
+                    <a href="#" class="social_box google">
+                        <span class="icon"><i class="fa fa-google-plus"></i></span>
+                        <span class="icon_title">Connect with Google</span>
+                    </a>-->
+                    <div class="fb-login-button" data-width="11" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="true" data-auto-logout-link="false" data-use-continue-as="true">
+
+                    </div>
+                </div>
+
+                <div class="centeredText">
+                    <span>Or use your Email address</span>
+                </div>
+
+                <div class="action_btns">
+                    <div class="one_half"><a href="#" id="login_form" class="btn">Login</a></div>
+                    <div class="one_half last"><a href="#" id="register_form" class="btn">Sign up</a></div>
+                </div>
+            </div>
+
+            <!-- Username & Password Login form -->
+            <div class="user_login">
+                <form action="#" method ="post" enctype="multipart/form-data">
+                    <label>Email / Username</label>
+                    <input id = "email"type="text" />
+                    <br />
+
+                    <label>Password</label>
+                    <input id ="pwd" type="password" />
+                    <br />
+                    <div id="wrong"></div>
+                    <div class="checkbox">
+                        <input id="remember" type="checkbox" />
+                        <label for="remember">Remember me on this computer</label>
+                    </div>
+
+                    <div class="action_btns">
+                        <div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a></div>
+                        <div class="one_half last"><input type="button" class="btn btn_red" value="Login" onclick="enter()"></input></div>
+                    </div>
+                </form>
+
+                <a href="#" class="forgot_password"></a>
+            </div>
+
+            <!-- Register Form -->
+            <div class="user_register">
+                <form action="#" method ="post" enctype="multipart/form-data">
+                    <label>Full Name</label>
+                    <input id ="flname" type="text" autocomplete = "on" />
+                    <br />
+
+                    <label>Email Address</label>
+                    <input id="id"type="email" autocomplete="on" />
+                    <br />
+
+                    <label >Password<span id="incr"></span></label>
+                    <input id="pd" type="password" />
+                    <br />
+
+                    <div class="checkbox">
+                        <input id="send_updates" type="checkbox" />
+                        <label for="send_updates">Send me occasional email updates</label>
+                    </div>
+
+                    <div class="action_btns">
+                        <div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a></div>
+                        <div class="one_half last"><input type="button" id="submit" class="btn btn_red" onclick="cr()" value ="Register"></input></div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+    <div class="SecPgContent" id="appear">
+       <div class="pg" id="page">
+           <div class="writingContent" id="side"><b><font color="red" style="padding: 3%"> WELCOME <br><span id ="name"></span></font></b><BR>
+           <div class="features" id="grammar" style="height :15% ;width:auto;;font-size: x-large;padding: 3%">
+               <a href="grammar.html"><b>Revise Grammar</b></a></div></div>
+         <div class ="writingContent" id="btw">
+             <form action="#" method="post" name="userfeeds">
+             <textarea id="userf"rows ="6" cols="60" placeholder="write your content here...." STYLE="margin-top: 3%"></textarea>
+             <input id="post"  type="button" value="POST"></input>
+         </form>
+             <div class="writings" id="pt" style="display: flex; flex-direction: column;height: 100%;position: relative">
+
+             </div>
+
+         </div>
+           <div class="writingContent" id="leftempty"></div>
+       </div>
+
+    </div>
+</div>
+<div class="secContainer" id="sec" >
+
+</div>
+
+<script
+        src="http://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+<!--<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> -->
+<script src="http://leanmodal.finelysliced.com.au/js/jquery.leanModal.min.js"></script>
+<script src ="index.js"> </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jscroll/2.3.9/jquery.jscroll.min.js"></script>
+
+
+<script>
+console.log("initially chck" +localStorage.getItem("stat"));
+var loc= localStorage.getItem("stat");
+/*switch(loc){
+    case "logged off" : break;
+    case "logged in" :{
+
+        console.log("enterd into if logged in check");
+        var modal=document.getElementById('modal');
+        modal.style.display="none";
+        document.getElementById('loginhead').style.display="none";
+        var appear = document.getElementById('appear');
+        appear.style.display="block";
+        document.getElementById('modal_trigger').style.display="none";
+        localStorage.setItem("email",email);
+        localStorage.setItem("password",pwd);
+        //  $('#loglink').style.display="none";
+        $('#loglink').text('Logout');
+        getname(email);
+        help=1;
+        $('#loglink').click(function(){
+            $('#appear').hide();
+            $('#modal').show();
+            $('#loglink').text('LogIn/SignUp');
+            document.getElementById('loglink').setAttribute('href','index.html');
+            localStorage.setItem("stat","logged off");
+            localStorage.removeItem("email");
+            localStorage.removeItem("password");
+        })
+        break;
+    }
+    default:{}
+}*/
+
+/*if(localStorage.getItem("stat")==="logged off" || localStorage.getItem("stat") === null){
+    document.getElementById('modal_trigger').style.display="block";
+    $('#appear').hide();
+    document.getElementById('appear').style.display="none";
+}
+else{
+    $.get("nav.html", function(data){
+        $("#navbar").replaceWith(data);
+    });
+
+    console.log("enterd into if logged in check");
+    var modal=document.getElementById('modal');
+    modal.style.display="none";
+   // document.getElementById('loginhead').style.display="none";
+    var appear = document.getElementById('appear');
+    appear.style.display="block";
+    document.getElementById('modal_trigger').style.display="none";
+    //localStorage.setItem("email",email);
+    //localStorage.setItem("password",pwd);
+    //  $('#loglink').style.display="none";
+    console.log("bfr text chng");
+    $('#loglink').text('Logout');
+    localStorage.setItem("stat","logged in");
+   // getname(email);
+
+    $('#loglink').click(function(){
+        console.log("set appearhide");
+        $('#appear').hide();
+        $('#modal').show();
+        $('#loglink').text('LogIn/SignUp');
+        document.getElementById('loglink').setAttribute('href','index.html');
+        localStorage.setItem("stat","logged off");
+       // localStorage.removeItem("email");
+        //localStorage.removeItem("password");
+    })
+
+}
+
+*/
+
+    cr=function(){
+        console.log("clked");
+        firstenter();
+
+    }
+var insid=0;
+ /*  po= function(){
+        console.log("fetch po");
+        $.get("/getposts",function(data,status){
+            console.log("enter into post");
+            feed = $('#userf').val();
+           var naam =localStorage.getItem("us");
+           console.log(naam);
+           console.log(data);
+            insid=data[data.length-1].id;
+            console.log(insid);
+            $.post('/posts',{
+                id:insid+1,
+                usrfeed:feed,
+                name :naam,
+            },function(data,status){
+                console.log(data);
+                $("pt").html("<div class='fc'><div class='fc1' style='background-color:yellow'>" +naam+'</div>'+
+                           '<div class="fc2">'+ feed+'</div>'+
+                    "</div>")
+            })
+        })
+    }*/
+
+    function addpost(newpost){
+        $.post('/posts',
+            newpost
+        ,function(data,status){
+            console.log(data);
+
+                showpost();
+        })
+    }
+$("body").on("custom-scroll", ".feedcon", function(){
+    console.log("Scrolled :P");
+})
+
+    var idsent=[],likes=[],i=1;
+
+
+    function showpost(){
+        console.log("showpost run");
+        $.get("/getposts",function(data,status) {
+            console.log("enter into post");
+            // feed = $('#userf').val();
+          //   var naam =localStorage.getItem("us");
+
+           insid = data[data.length-1].id;
+           console.log(insid);
+            $('#pt').html('');
+            for( var feed of data) {
+
+                let s1=new Date(feed.postCreated);
+                console.log(feed.postCreated +"date");
+                let s= new Date();
+                let y = s.getFullYear()-s1.getFullYear();
+                let mm= s.getMonth()-s1.getMonth();
+                let date = s.getDate() - s1.getDate();
+                 let n = s.getSeconds()-s1.getSeconds();
+                 let m = s.getMinutes()-s1.getMinutes();
+                 let h = s.getHours()-s1.getHours();
+                 let ans ;
+                 if(y<1){
+                 if(mm<1)
+              if(date<1){
+                 if(h<1) {
+                     if (m <1) {
+                         if (n <60) {
+                             ans = "just now";
+                         }
+                     }
+                     else{
+                         ans=m+" min ago";
+                     }
+                 }
+                 else{
+                     if(h<24)
+                     ans=h +" hours ago";
+                     else{
+                         ans =feed.postCreated;
+                     }
+                 }}}
+                 else ans =feed.postCreated;
+                 console.log(feed.likes +"  feed.likes wrking");
+                likes[i]=feed.likes;
+                console.log(feed.id +"feed.id wrking");
+                 idsent[i]= feed.id;
+               //  var x ="id"+feed.id;
+                // console.log(x);
+                $('#pt').prepend('<div class="feedcon" style="background-color: papayawhip;border-radius: 5%"><img src="ora_logo.jpg" height="25px";width="25px">'+feed.name+ "    "+ feed.postCreated+'<br>'
+                    + feed.usrfeed+'<br>'
+                     +'<div class="belowPost" style="display:flex;"><div class="postbtns" id ="like">'+'<span id="sid'+feed.id+'"class="numl">'+likes[i]+" " +'<input class ="likebtn"type="button"  value="Like" id="id'+feed.id+'" onclick="upc(event)"> </input></div>' +
+                    '<div class ="postbtns" id="cmntbtn"></div><div class ="sharebtn"></div></div>'+
+                    '</div></div><br><br>');
+                        i++;
+                        console.log(i);
+               // $('#x').css.border-color:"red";
+             //   document.getElementById('x').style.borderColor="red";
+                //console.log($())
+            } //listenForScrollEvent($(".feedcon"));
+        })
+    }
+
+/*function listenForScrollEvent(el){
+    el.on("scroll", function(){
+        console.log("scroll wrking");
+        el.trigger("custom-scroll");
+
+    })
+}*/
+
+//$('div[id^="id"]').on('click',function() {
+ function upc(event) {
+     console.log("vbs");
+     //$(function(){
+ // $('input[id^="id"]').click(function () {
+   // var car =$('input[id^="id"]');
+     var car= $(event.target);
+     var c = car.attr('id');
+        console.log("lyk clk");
+       //var c = $(this).attr('id');
+      //  var c =$('input[id^="id"]').attr('id');
+        console.log(car +" car");
+       // var c =car.attr('id');
+        console.log(c + "dynamic div");
+        var useid = parseInt(c.slice(2));
+        console.log(useid);
+
+     $.post("/getlikes",{idi:useid},function(data,status){
+         console.log(data);
+         console.log(data[0].likes +"crntlikes");
+         //console.log(data )
+         var assum= parseInt(data[0].likes)+1;
+            console.log("assum " +assum);
+         $.post("/updatelikes", {
+             li:assum,
+             i:""+useid+""
+         }, function(data, status) {
+             console.log(status);
+             console.log("liks" + data);
+             console.log(assum +"assum");
+
+           var consider=  $('span[id^="sid"]');
+           var xyz= consider.slice(3);
+           car.parent('span').html(assum);
+           car.attr("value","Liked");
+           console.log(xyz[0] +"xyz");
+        /*   for(var q in xyz){
+               if(q==useid){
+                   var abc ="sid"+useid;
+                   $('#abc').html(assum +" Likes");
+               }
+           }*/
+                 //.html(assum +" Likes");
+
+         })
+         showpost();
+
+     })
+
+     //})
+}
+
+  /*  uplike = function(id){
+
+        console.log(likes[id] +"b4");
+        likes[id]=likes[id]+1;
+        console.log("a4" +likes[id]);
+        $.post('/updatelikes', {likes:likes[id],id:id},function(data,status){
+            console.log(status);
+            console.log("liks" +data);
+            document.getElementById('numl').innerHTML=data.likes;
+})}
+    $('.likebtn').click(function(){
+       // console.log(likes[id] +"b4");
+        //likes[id]=likes[id]+1;
+      //  var c =parseInt($('#numl').textContent);
+
+        console.log("a4" +likes[id]);
+        $.post('/updatelikes', {likes:likes[id],id:id},function(data,status){
+            console.log(status);
+            console.log("liks" +data);
+            document.getElementById('numl').innerHTML=data.likes;
+
+        })
+
+    })*/
+
+    $(document).ready(function () {
+
+        showpost();
+
+
+        $('#post').click(function () {
+             let newpost = {
+                 id: insid+1,
+                 usrfeed: $('#userf').val(),
+                 name: localStorage.getItem("us")
+             };
+             addpost(newpost);
+         })
+
+        /*$('input[id^="id"]').click(function () {
+            //   var car =$('input[id^="id"]');
+            //var c = car.getAttribute('id');
+            console.log("lyk clk");
+            var c = $(this).attr('id');
+            //  var c =$('input[id^="id"]').attr('id');
+            // console.log(car +" car");
+            // var c =car.attr('id');
+            console.log(c + "dynamic div");
+            var useid = parseInt(c.slice(2));
+            console.log(useid);
+           // likes[useid] = likes[useid] + 1;
+           // console.log("a4e " + likes[useid]);
+           // var assum= ""+likes[useid]+"";
+            $.post("/getlikes",{idi:useid},function(data,status){
+                console.log(data +"crntlikes");
+                var assum= parseInt(data)+1;
+
+                $.post("/updatelikes", {
+                    li:assum,
+                    i:""+useid+""
+                }, function(data, status) {
+                    console.log(status);
+                    console.log("liks" + data);
+                    //  document.getElementById('numl').innerHTML=data.likes;
+                    // document.getElementById('c').setAttribute("value", data.likes + "Likes");
+                    $('.numl').html(data.likes);
+                    showpost();
+
+                })
+
+
+            })
+
+
+        })*/
+
+    });
+
+
+/*$('#pt').jscroll({
+    loadingHtml: '<img src="loading.gif" alt="Loading" /> Loading...',
+    padding: 20,
+   nextSelector: 'a.jscroll-next:last',
+    contentSelector: 'div .feedcon'
+});*/
+
+    var help=0 ;
+    enter=function(){
+            console.log("enter wrking");
+            email= $('#email').val();
+            pwd= $('#pwd').val();
+            $.post('/login',{
+                email:email,
+                pwd:pwd,
+            },function(data,status){
+                console.log(data);
+                if(data=="matched"){
+                    console.log("welcome");
+                    var modal=document.getElementById('modal');
+                    modal.style.display="none";
+                    document.getElementById('loginhead').style.display="none";
+                    var appear = document.getElementById('appear');
+                    appear.style.display="block";
+                    document.getElementById('modal_trigger').style.display="none";
+                    localStorage.setItem("email",email);
+                    localStorage.setItem("password",pwd);
+                  //  $('#loglink').style.display="none";
+                    $('#loglink').text('Logout');
+                    getname(email);
+                    help=1;
+                    $('#loglink').click(function(){
+                        $('#appear').hide();
+                        $('#modal').show();
+                        $('#loglink').text('LogIn/SignUp');
+                        localStorage.setItem("stat" ,"logged off");
+                        document.getElementById('loglink').setAttribute('href','index.html');
+                    })
+
+                }
+                else{
+                    console.log("enter right pwd");
+                    $('#wrong').html('<span id="bhar">Incorrect Password !! Enter correct password</span>');
+                }
+            })
+
+            getname= function(email){
+                $.post('/getuser',{
+                    email:email
+                },function(data,status){
+                    console.log("getuser" +data[0].name);
+                    log="logged in";
+                    var stat = "logged in "
+                    localStorage.setItem("stat", stat);
+                    localStorage.setItem("us", data[0].name);
+                    console.log("log is "+log +data[0].name);
+                    $('#name').html(data[0].name);
+                })
+            }
+
+
+
+    }
+    firstenter=function(){
+        console.log("frstentr");
+        var name= $('#flname').val();
+        var email = $('#id').val();
+        var pd = $('#pd').val();
+        // $.get('/signup',function(data,status){
+        //   large=data[0].email;
+        $.post('/signup',{
+            name:name,
+            email:email,
+            pass:pd,
+
+        },function(data , status){
+            console.log(pass);
+
+        });
+        //  cb(1);
+        //    })
+    }
+
+
+    $.get("nav.html", function(data){
+        $("#navbar").replaceWith(data);
+    });
+
+
+    $("#modal_trigger").leanModal({
+        top: 100,
+        overlay: 0.6,
+        closeButton: ".modal_close"
+
+    });
+    if(help==1){
+        document.getElementById(lean_overlay).style.opacity=0;
+        $("modal_trigger").leanModal({
+            overlay:0,
+
+        })
+    }
+    $(function() {
+        // Calling Login Form
+        $("#login_form").click(function() {
+            $(".social_login").hide();
+            $(".user_login").show();
+            return false;
+        });
+
+        // Calling Register Form
+        $("#register_form").click(function() {
+            $(".social_login").hide();
+            $(".user_register").show();
+            $(".header_title").text('Register');
+            return false;
+        });
+
+        // Going back to Social Forms
+        $(".back_btn").click(function() {
+            $(".user_login").hide();
+            $(".user_register").hide();
+            $(".social_login").show();
+            $(".header_title").text('Login');
+            return false;
+        });
+    });
+
+
+/*$(function () {
+    //$("div").slice(0, 4).show();
+    $(".feedcon").slice(0,4).show();
+    $("#loadMore").on('click', function (e) {
+        e.preventDefault();
+       // $("div:hidden").slice(0, 4).slideDown();
+        $(".feedcon").hide().slice(0,4).slideDown();
+      //
+        //  if ($("div:hidden").length == 0) {
+        if($('.feedcon').hide().length==0){
+            $("#load").fadeOut('slow');
+        }
+        $('html,body').animate({
+            scrollTop: $(this).offset().top
+        }, 1500);
+    });
+});
+
+$('a[href=#top]').click(function () {
+    $('body,html').animate({
+        scrollTop: 0
+    }, 600);
+    return false;
+});
+
+$(window).scroll(function () {
+    if ($(this).scrollTop() > 50) {
+        $('.totop a').fadeIn();
+    } else {
+        $('.totop a').fadeOut();
+    }
+});*/
+
+/*$(document).ready(function () {
+    size_li = $("#pt div").size();
+    x=3;
+    $('#pt div:lt('+x+')').show();
+    $('#loadMore').click(function () {
+        x= (x+5 <= size_li) ? x+5 : size_li;
+        $('#pt div:lt('+x+')').show();
+    });
+    $('#showLess').click(function () {
+        x=(x-5<0) ? 3 : x-5;
+        $('#pt div').not(':lt('+x+')').hide();
+    });
+});*/
+
+</script>
+
+</body>
+
+</html>
