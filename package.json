@@ -1,0 +1,24 @@
+{
+  "name": "orators",
+  "version": "1.0.0",
+  "description": "orators society",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "himani",
+  "license": "ISC",
+  "dependencies": {
+    "body": "^5.1.0",
+    "body-parser": "^1.17.2",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.15.3",
+    "file-system": "^2.2.2",
+    "md5": "^2.2.1",
+    "mysql": "^2.14.0",
+    "parser": "^0.1.4",
+    "request": "^2.81.0"
+  },
+  "devDependencies": {}
+}

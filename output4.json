@@ -1,0 +1,43 @@
+{
+    "news": [
+        null,
+        null,
+        null,
+        {
+            "feed": "OPINION | From Gurmeet Ram Rahim Singh to Asaram Bapu, India's Obsession with Rape Accused Babas",
+            "src": "OpinionNews18 21h ago",
+            "img": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRdZxaun54KiIA3qoAglEEtIJ_UtPIUiunHCqUNVvXZQfuAyAo0VQJ-7hbi0RqAszsobfJ0cbZKaaU",
+            "link": "http://www.news18.com/news/india/opinion-dera-sacha-sauda-chief-gurmeet-ram-rahim-singh-asaram-bapu-rape-accused-babas-1500875.html"
+        },
+        {
+            "feed": "Terrorists attack district police lines in Pulwama, three security personnel martyred",
+            "src": "Times of India 5h ago",
+            "img": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRdZxaun54KiIA3qoAglEEtIJ_UtPIUiunHCqUNVvXZQfuAyAo0VQJ-7hbi0RqAszsobfJ0cbZKaaU",
+            "link": "http://timesofindia.indiatimes.com/india/terrorists-attack-district-police-line-in-pulwama-4-security-personnel-injured/articleshow/60229094.cms"
+        },
+        {
+            "feed": "DPL attack: Toll two as injured CRPF man succumbs",
+            "src": "Local SourceGreater Kashmir 3h ago",
+            "img": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRdZxaun54KiIA3qoAglEEtIJ_UtPIUiunHCqUNVvXZQfuAyAo0VQJ-7hbi0RqAszsobfJ0cbZKaaU",
+            "link": "http://www.greaterkashmir.com/news/kashmir/dpl-attack-toll-two-as-injured-crpf-man-succumbs/258695.html"
+        },
+        {
+            "feed": "Pulwama encounter: 2 security personnel killed in terror attack in Kashmir",
+            "src": "Business Standard 1h ago",
+            "img": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRdZxaun54KiIA3qoAglEEtIJ_UtPIUiunHCqUNVvXZQfuAyAo0VQJ-7hbi0RqAszsobfJ0cbZKaaU",
+            "link": "http://www.business-standard.com/article/current-affairs/pulwama-encounter-2-security-personnel-killed-in-terror-attack-in-kashmir-117082600112_1.html"
+        },
+        {
+            "feed": "Enforcement Directorate Arrests Controversial Meat Exporter Moin Qureshi In Money Laundering Case",
+            "src": "NDTV 2h ago",
+            "img": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRdZxaun54KiIA3qoAglEEtIJ_UtPIUiunHCqUNVvXZQfuAyAo0VQJ-7hbi0RqAszsobfJ0cbZKaaU",
+            "link": "http://www.ndtv.com/india-news/enforcement-directorate-arrests-controversial-meat-exporter-moin-qureshi-in-money-laundering-case-1742260"
+        },
+        {
+            "feed": "ED arrests meat exporter Moin Qureshi in money laundering case",
+            "src": "Times of India 3h ago",
+            "img": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRdZxaun54KiIA3qoAglEEtIJ_UtPIUiunHCqUNVvXZQfuAyAo0VQJ-7hbi0RqAszsobfJ0cbZKaaU",
+            "link": "http://timesofindia.indiatimes.com/india/ed-arrests-meat-exporter-moin-qureshi-in-money-laundering-case/articleshow/60230304.cms"
+        }
+    ]
+}
