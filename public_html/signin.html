@@ -62,6 +62,8 @@
         .btn {
             padding: 10px 20px;
             background: #F4F4F2;
+
+
         }
 
         .btn_red {
@@ -357,7 +359,7 @@
 <script>
    // if(localStorage.getItem("stat")=="logged in"){
 
-
+/*
 
     window.fbAsyncInit = function() {
         FB.init({
@@ -383,7 +385,7 @@
            js = d.createElement(s); js.id = id;
            js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.10&appId=109057493101348";
            fjs.parentNode.insertBefore(js, fjs);
-       }(document, 'script', 'facebook-jssdk'));
+       }(document, 'script', 'facebook-jssdk'));*/
 </script>
 
 
@@ -393,7 +395,16 @@
 <div class="container">
 
     <h1 id="loginhead"></h1>
-    <a id="modal_trigger" href="#modal" class="btn">Click here to Login or register</a>
+    <a id="modal_trigger" href="#modal" class="btn" style="border-color: black;border-radius: 10px;">Click here to Login or register</a>
+    <br>
+        <div class="sajao" id="decorate" style="width:auto">
+            <div id="dec1" style="font-size: x-large"><center>Learn & Grow at Orators</center>
+            <br>
+                <img src="images/orabook.jpeg" style="width: auto;margin-left: -2%" ><br>
+            </div>
+
+        </div>
+
 
     <div id="modal" name ="khulna"class="popupContainer" style="display:none;">
         <header class="popupHeader">
@@ -415,13 +426,13 @@
                         <span class="icon"><i class="fa fa-google-plus"></i></span>
                         <span class="icon_title">Connect with Google</span>
                     </a>-->
-                    <div class="fb-login-button" data-width="11" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="true" data-auto-logout-link="false" data-use-continue-as="true">
+                   <!-- <div class="fb-login-button" data-width="11" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="true" data-auto-logout-link="false" data-use-continue-as="true">
 
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="centeredText">
-                    <span>Or use your Email address</span>
+                    <span> Use your Email address</span>
                 </div>
 
                 <div class="action_btns">
@@ -457,7 +468,7 @@
 
             <!-- Register Form -->
             <div class="user_register">
-                <form action="#" method ="post" enctype="multipart/form-data">
+                <form action="#" name ="getregister" method ="post" enctype="multipart/form-data">
                     <label>Full Name</label>
                     <input id ="flname" type="text" autocomplete = "on" />
                     <br />
@@ -466,13 +477,13 @@
                     <input id="id"type="email" autocomplete="on" />
                     <br />
 
-                    <label >Password<span id="incr"></span></label>
+                    <label>Password<span id="incr"></span></label>
                     <input id="pd" type="password" />
                     <br />
 
-                    <div class="checkbox">
+                    <div class="nocheck">
                         <input id="send_updates" type="checkbox" />
-                        <label for="send_updates">Send me occasional email updates</label>
+                        <label for="send_updates" id ="putreg" style="font-size:large;color: red"></label>
                     </div>
 
                     <div class="action_btns">
@@ -485,20 +496,26 @@
     </div>
     <div class="SecPgContent" id="appear">
        <div class="pg" id="page">
-           <div class="writingContent" id="side"><b><font color="red" style="padding: 3%"> WELCOME <br><span id ="name"></span></font></b><BR>
-           <div class="features" id="grammar" style="height :15% ;width:auto;;font-size: x-large;padding: 3%">
+           <div class="writingContent" id="side"><b><font color="red" style=""> WELCOME <br><span id ="name"></span></font></b><BR>
+           <div class="features" id="grammar" style="height :15% ;width:80%;font-size: x-large;padding:4%; background-color:lavender;margin-top:4%;margin-left:-2%;padding-right:2%;border-radius:10px;">
                <a href="grammar.html"><b>Revise Grammar</b></a></div></div>
          <div class ="writingContent" id="btw">
              <form action="#" method="post" name="userfeeds">
              <textarea id="userf"rows ="6" cols="60" placeholder="write your content here...." STYLE="margin-top: 3%"></textarea>
              <input id="post"  type="button" value="POST"></input>
+                 <br>
          </form>
              <div class="writings" id="pt" style="display: flex; flex-direction: column;height: 100%;position: relative">
 
              </div>
 
-         </div>
-           <div class="writingContent" id="leftempty"></div>
+         </div> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+           <div class="writingContent" id="leftempty">
+            <div class="features">   <b>  ORATORS Videos </b> </div><br>
+               <iframe width="450" height="315" src="https://www.youtube.com/embed/9jcPvKCQWkw?rel=0" frameborder="0" allowfullscreen></iframe>
+                    <br>
+               <iframe width="450" height="315" src="https://www.youtube.com/embed/SHyM0NALlbQ?rel=0" frameborder="0" allowfullscreen></iframe>
+           </div>
        </div>
 
     </div>
@@ -597,30 +614,7 @@ else{
         firstenter();
 
     }
-var insid=0;
- /*  po= function(){
-        console.log("fetch po");
-        $.get("/getposts",function(data,status){
-            console.log("enter into post");
-            feed = $('#userf').val();
-           var naam =localStorage.getItem("us");
-           console.log(naam);
-           console.log(data);
-            insid=data[data.length-1].id;
-            console.log(insid);
-            $.post('/posts',{
-                id:insid+1,
-                usrfeed:feed,
-                name :naam,
-            },function(data,status){
-                console.log(data);
-                $("pt").html("<div class='fc'><div class='fc1' style='background-color:yellow'>" +naam+'</div>'+
-                           '<div class="fc2">'+ feed+'</div>'+
-                    "</div>")
-            })
-        })
-    }*/
-
+    var insid=0;
     function addpost(newpost){
         $.post('/posts',
             newpost
@@ -649,46 +643,45 @@ $("body").on("custom-scroll", ".feedcon", function(){
             $('#pt').html('');
             for( var feed of data) {
 
-                let s1=new Date(feed.postCreated);
-                console.log(feed.postCreated +"date");
-                let s= new Date();
-                let y = s.getFullYear()-s1.getFullYear();
-                let mm= s.getMonth()-s1.getMonth();
-                let date = s.getDate() - s1.getDate();
-                 let n = s.getSeconds()-s1.getSeconds();
-                 let m = s.getMinutes()-s1.getMinutes();
-                 let h = s.getHours()-s1.getHours();
-                 let ans ;
-                 if(y<1){
-                 if(mm<1)
-              if(date<1){
-                 if(h<1) {
-                     if (m <1) {
-                         if (n <60) {
-                             ans = "just now";
+                var fans;
+                 let fd = new Date();
+                 console.log(feed.postCreated +"check this");
+                 let adyear= feed.postCreated.slice(0,4);
+                 let admnth = feed.postCreated.slice(5,7);
+                 let  addate=feed.postCreated.slice(8,10);
+                 let  adhours= feed.postCreated.slice(11,13)
+                 let  adhrs= parseInt(adhours)+ 5;
+
+                 let admin =feed.postCreated.slice(14,16);
+                 let adsec = feed.postCreated.slice(17,19);
+                 if(fd.getFullYear()-adyear <1){
+                     if(fd.getMonth()-admnth <1){
+                         if(fd.getDate()-addate <1){
+                             if(fd.getHours()-adhrs<=1){
+                                 if(fd.getMinutes()-admin<1){
+                                     if(fd.getSeconds()-adsec<=5){
+                                         fans="just now"
+                                     }
+                                    else fans=fd.getSeconds()-adsec +" sec ago"
+                                 }
+                                 else fans =fd.getMinutes()-admin +" min ago"
+                             }
+                             else fans =fd.getHours()-adhrs +" hours ago"
                          }
+                         else fans =adhrs +":"+admin+"   "+addate+"-"+admnth+"-"+adyear;
                      }
-                     else{
-                         ans=m+" min ago";
-                     }
+                     else fans =adhrs +":"+admin+"   "+addate+"-"+admnth+"-"+adyear;
                  }
-                 else{
-                     if(h<24)
-                     ans=h +" hours ago";
-                     else{
-                         ans =feed.postCreated;
-                     }
-                 }}}
-                 else ans =feed.postCreated;
+                 else fans =adhours +":"+admin+"   "+addate+"-"+admnth+"-"+adyear;
                  console.log(feed.likes +"  feed.likes wrking");
-                likes[i]=feed.likes;
-                console.log(feed.id +"feed.id wrking");
+                 likes[i]=feed.likes;
+                 console.log(feed.id +"feed.id wrking");
                  idsent[i]= feed.id;
-               //  var x ="id"+feed.id;
+                //  var x ="id"+feed.id;
                 // console.log(x);
-                $('#pt').prepend('<div class="feedcon" style="background-color: papayawhip;border-radius: 5%"><img src="ora_logo.jpg" height="25px";width="25px">'+feed.name+ "    "+ feed.postCreated+'<br>'
+                $('#pt').prepend('<div class="feedcon" style="background-color: papayawhip;border-radius: 5%"><img src="ora_logo.jpg" height="25px";width="25px">'+'<b>'+feed.name+ '</b>'+"    "+ fans+'<br>'
                     + feed.usrfeed+'<br>'
-                     +'<div class="belowPost" style="display:flex;"><div class="postbtns" id ="like">'+'<span id="sid'+feed.id+'"class="numl">'+likes[i]+" " +'<input class ="likebtn"type="button"  value="Like" id="id'+feed.id+'" onclick="upc(event)"> </input></div>' +
+                     +'<div class="belowPost" style="display:flex;"><div class="postbtns" id ="like">'+'<span id="sid'+feed.id+'"class="numl">'+likes[i]+" " +'<input class ="likebtn"type="button" value="Like" id="id'+feed.id+'" onclick="upc(event)"> </input></div>' +
                     '<div class ="postbtns" id="cmntbtn"></div><div class ="sharebtn"></div></div>'+
                     '</div></div><br><br>');
                         i++;
@@ -720,7 +713,7 @@ $("body").on("custom-scroll", ".feedcon", function(){
        //var c = $(this).attr('id');
       //  var c =$('input[id^="id"]').attr('id');
         console.log(car +" car");
-       // var c =car.attr('id');
+
         console.log(c + "dynamic div");
         var useid = parseInt(c.slice(2));
         console.log(useid);
@@ -744,46 +737,14 @@ $("body").on("custom-scroll", ".feedcon", function(){
            car.parent('span').html(assum);
            car.attr("value","Liked");
            console.log(xyz[0] +"xyz");
-        /*   for(var q in xyz){
-               if(q==useid){
-                   var abc ="sid"+useid;
-                   $('#abc').html(assum +" Likes");
-               }
-           }*/
-                 //.html(assum +" Likes");
 
          })
          showpost();
 
      })
-
-     //})
 }
 
-  /*  uplike = function(id){
 
-        console.log(likes[id] +"b4");
-        likes[id]=likes[id]+1;
-        console.log("a4" +likes[id]);
-        $.post('/updatelikes', {likes:likes[id],id:id},function(data,status){
-            console.log(status);
-            console.log("liks" +data);
-            document.getElementById('numl').innerHTML=data.likes;
-})}
-    $('.likebtn').click(function(){
-       // console.log(likes[id] +"b4");
-        //likes[id]=likes[id]+1;
-      //  var c =parseInt($('#numl').textContent);
-
-        console.log("a4" +likes[id]);
-        $.post('/updatelikes', {likes:likes[id],id:id},function(data,status){
-            console.log(status);
-            console.log("liks" +data);
-            document.getElementById('numl').innerHTML=data.likes;
-
-        })
-
-    })*/
 
     $(document).ready(function () {
 
@@ -799,42 +760,7 @@ $("body").on("custom-scroll", ".feedcon", function(){
              addpost(newpost);
          })
 
-        /*$('input[id^="id"]').click(function () {
-            //   var car =$('input[id^="id"]');
-            //var c = car.getAttribute('id');
-            console.log("lyk clk");
-            var c = $(this).attr('id');
-            //  var c =$('input[id^="id"]').attr('id');
-            // console.log(car +" car");
-            // var c =car.attr('id');
-            console.log(c + "dynamic div");
-            var useid = parseInt(c.slice(2));
-            console.log(useid);
-           // likes[useid] = likes[useid] + 1;
-           // console.log("a4e " + likes[useid]);
-           // var assum= ""+likes[useid]+"";
-            $.post("/getlikes",{idi:useid},function(data,status){
-                console.log(data +"crntlikes");
-                var assum= parseInt(data)+1;
 
-                $.post("/updatelikes", {
-                    li:assum,
-                    i:""+useid+""
-                }, function(data, status) {
-                    console.log(status);
-                    console.log("liks" + data);
-                    //  document.getElementById('numl').innerHTML=data.likes;
-                    // document.getElementById('c').setAttribute("value", data.likes + "Likes");
-                    $('.numl').html(data.likes);
-                    showpost();
-
-                })
-
-
-            })
-
-
-        })*/
 
     });
 
@@ -860,6 +786,7 @@ $("body").on("custom-scroll", ".feedcon", function(){
                     console.log("welcome");
                     var modal=document.getElementById('modal');
                     modal.style.display="none";
+                    document.getElementById('decorate').style.display="none";
                     document.getElementById('loginhead').style.display="none";
                     var appear = document.getElementById('appear');
                     appear.style.display="block";
@@ -895,7 +822,7 @@ $("body").on("custom-scroll", ".feedcon", function(){
                     localStorage.setItem("stat", stat);
                     localStorage.setItem("us", data[0].name);
                     console.log("log is "+log +data[0].name);
-                    $('#name').html(data[0].name);
+                    $('#name').html((data[0].name).toUpperCase());
                 })
             }
 
@@ -907,19 +834,28 @@ $("body").on("custom-scroll", ".feedcon", function(){
         var name= $('#flname').val();
         var email = $('#id').val();
         var pd = $('#pd').val();
-        // $.get('/signup',function(data,status){
-        //   large=data[0].email;
+        $("#putreg").html("Open an email from orators for verifying your EmailID");
         $.post('/signup',{
             name:name,
             email:email,
             pass:pd,
 
         },function(data , status){
-            console.log(pass);
-
+            console.log(data);
+             var getit= Object.keys(data).length;
+            if(getit<=3){
+                console.log("entered in invalid id");
+                $("#putreg").html("Invalid information");
+            }
+          else {
+                console.log("see data" + Object.entries(data));
+                console.log("hehe" +data.code);
+                $("#putreg").html("THANKYOU,You are registered.");
+                document.getregister.reset();
+            }
         });
-        //  cb(1);
-        //    })
+
+
     }
 
 
