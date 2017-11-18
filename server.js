@@ -14,6 +14,94 @@ app.use(bodyParser.json());
 var request = require('request');
 var cheerio = require('cheerio');
 
+const nodemailer=require('nodemailer');
+
+var transporter=nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'oratorsofficial@gmail.com', //email address to send from
+        pass: 'Ora_Official1234' //the actual password for that account
+    }
+});
+
+
+var host1=3300,rand;
+var HelperOptions;
+var entering;
+
+app.post('/signup',function(req,res){
+    console.log("post"+ req.body.name +req.body.email );
+    // var phash= md5(req.body.pass);
+    entering={
+        name : req.body.name,
+        email: req.body.email,
+        hash :md5(req.body.pass)
+    };
+    console.log(entering.hash);
+
+    rand=Math.floor((Math.random() * 100) + 54);
+    link="http://"+"localhost:3300"+"/verify?id="+rand;
+
+
+
+    HelperOptions={
+        from:'orators<oratorsofficial@gmail.com>',
+        to:req.body.email,
+        subject: "Please confirm your Email account "+req.body.name,
+        html : "Hello,<br> Please Click on the link to verify your email.<br><a href="+link+">Click here to verify</a>"
+
+    };
+
+    transporter.sendMail(HelperOptions,function(err,info){
+        if(err){
+            console.log("transwalaERROR" +err);
+          return  res.send(err);
+
+        }
+      else {
+            console.log(" the msg has sent");
+            console.log(info);
+
+
+
+        }
+
+
+    })
+
+
+})
+
+
+app.get('/verify',function(req,res){
+    console.log(req.protocol+":/"+req.get('host'));
+
+    console.log("entrd verify " +req.query.id);
+
+    if(req.query.id==rand)
+    {
+        console.log("email is verified");
+        res.write("<h1>Email "+HelperOptions.to+" is been Successfully verified. You can Login now by visitng the website." );
+
+        db.signup(entering, function (result) {
+            console.log("dbsignup result " + result);
+        //  return  res.send(result);
+
+
+        });
+
+    }
+    else
+    {
+        console.log("email is not verified");
+        res.end("<h1>Bad Request</h1>");
+    }
+
+});
+
+
+
+
 app.get('/scrape' ,function (req,res) {
     url = 'https://news.google.com/news/?ned=in&hl=en-IN';
 
@@ -39,12 +127,7 @@ app.get('/scrape' ,function (req,res) {
                     feed = data.text();
 
                     link = data.attr('href');
-                 //   var list = document.getElementsByClassName('.lmFAjc')[i].getAttribute("src");
-                 //   var image = list;
                      var image = $('.lmFAjc').attr('src');
-
-
-                    //   console.log(feed);
                     json.feed.push(feed);
                     json.src.push(src);
                     json.imgsrc.push(image);
@@ -63,7 +146,6 @@ app.get('/scrape' ,function (req,res) {
                 }
             }
             var scrape = JSON.stringify(output, null, 4);
-        //    console.log(scrape);
 
 
             fs.writeFile('output4.json', JSON.stringify(output, null, 4), function (err) {
@@ -152,20 +234,7 @@ app.post("/updatelikes",function(req,res){
     })
 })
 
-app.post('/signup',function(req,res){
-    console.log("post"+ req.body.name +req.body.email );
-   // var phash= md5(req.body.pass);
-    var entering={
-        name : req.body.name,
-        email: req.body.email,
-        hash :md5(req.body.pass)
-    };
-    console.log(entering.hash);
-    db.signup(entering,function(result){
-        res.send(result);
-        console.log(result);
-    })
-})
+
 
 app.post('/login',function(req,res){
     console.log("login");
@@ -175,6 +244,10 @@ app.post('/login',function(req,res){
 
     };
     db.login(log,function(result){
+        if(result==1){
+            res.send("unmatched");
+        }
+
         console.log( "result pwd"+result[0].pwd);
         if(result[0].pwd==log.pwd){
             console.log("pwd checked ri8");
