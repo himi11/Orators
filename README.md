@@ -12,7 +12,7 @@ Orators is a website which was developed to provide one common platform to many 
 <br>
  <b> Home page </b>
  <br>
-<img src ="https://github.com/himi11/Orators/blob/master/public_html/images/Screen%20Shot%202017-08-15%20at%2010.25.26%20PM.png"><br><br>
+<img src ="https://github.com/himi11/Orators/blob/master/public_html/images/Screen%20Shot%202017-11-19%20at%201.43.06%20AM.png"><br><br>
 <b> About </b>
 <br><br>
 <img src="https://github.com/himi11/Orators/blob/master/public_html/images/Screen%20Shot%202017-08-15%20at%2010.25.40%20PM.png"><br>
@@ -46,7 +46,7 @@ Orators is a website which was developed to provide one common platform to many 
 <br> <br>
 
 Post your content<br><br>
-<img src ="https://github.com/himi11/Orators/blob/master/public_html/images/Screen%20Shot%202017-08-17%20at%202.06.08%20PM.png"><br> <br>
+<img src ="https://github.com/himi11/Orators/blob/master/public_html/images/Screen%20Shot%202017-11-19%20at%201.42.22%20AM.png"><br> <br>
 
 <b>Revise Grammar </b>
 <img src ="https://github.com/himi11/Orators/blob/master/public_html/images/Screen%20Shot%202017-08-16%20at%204.08.12%20AM.png">
